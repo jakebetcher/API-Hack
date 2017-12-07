@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>API Hack</title>
+	<link href="main.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<h1>Search Travel Destinations</h1>
+          
+          <form aria-label='search-videos' action="#" class="js-search-form" onsubmit="return false;">
+            <label for="query"></label>
+            <input aria-label='search-here' type="text" class="js-query" id='search-places'>
+            <button aria-label='submit-button' type="submit" onclick="storeTheAddress()">Search</button>
+          </form>
+          <main role='main'>
+          <h2 class='results-title'>Results</h2>
+          <div class="js-search-results" aria-live='assertive' aria-atomic='true'>
+            
+          </div> 
+          
+      </main>
+    
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjtmHMexw6qH3OnOxTQmW09y1OYcpD6EE"></script> 
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script src="app.js"></script>
+</body>
+</html>
+
