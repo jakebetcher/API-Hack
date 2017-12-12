@@ -11,6 +11,11 @@ function storeTheFilters() {
 	return filter;
 }
 
+function onFormSubmit ()
+    {
+        $('#my-form').val('');
+        return true; // allow form submission to continue
+    }
 
 
 function getDataFromGeocodingApi(callback) {
@@ -36,7 +41,12 @@ function getDataFromGeocodingApi(callback) {
 
         function handleSubmit() {
           $('.js-search-form').submit( function(event) {
+              event.preventDefault();
+              $('.js-search-results').empty();
               getDataFromGeocodingApi(getCoordinates);
+              const queryTarget = $(event.currentTarget).find('.js-query');
+    		  const query = queryTarget.val();
+              queryTarget.val("");
           })
       }
       
