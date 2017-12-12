@@ -26,7 +26,7 @@ function getDataFromGeocodingApi(callback) {
         const eastBound = data.results[0].geometry.bounds.northeast.lng;
         const bounds = [southBound, westBound, northBound, eastBound];
         console.log(bounds);
-        getDataFromSygicApi(doThis, southBound, westBound, northBound, eastBound);
+        getDataFromSygicApi(renderResult, southBound, westBound, northBound, eastBound);
         }
 
         function handleSubmit() {
@@ -56,6 +56,23 @@ function getDataFromGeocodingApi(callback) {
   	$.ajax(settings);
 }
 
-function doThis(data) {
-	console.log(data);
+function renderResult(result) {
+	console.log(result.data);
+	const arrayLength = result.data.places.length;
+	for (let i=0; i<arrayLength; i++) {
+	if (result.data.places[i].thumbnail_url === null) {
+		console.log('no image');
+	} else {
+	let theResult = `
+		<div class='results-div'>
+			<h2>${result.data.places[i].name}</h2>
+			<img src='${result.data.places[i].thumbnail_url}'>
+			<p><a href='${result.data.places[i].url}'>check it out</a></p>
+		</div>
+	`;
+	
+	$('.js-search-results').append(theResult);
 }
+}
+}
+
