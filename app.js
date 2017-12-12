@@ -6,6 +6,11 @@ function storeTheAddress() {
 	return theAddress;
 }
 
+function storeTheFilters() {
+	let filter = $('#filters').val();
+	return filter;
+}
+
 
 
 function getDataFromGeocodingApi(callback) {
@@ -38,6 +43,7 @@ function getDataFromGeocodingApi(callback) {
       $(handleSubmit);
 
  function getDataFromSygicApi(callback, south, west, north, east) {
+  		let filter = storeTheFilters();
   		const settings = {
     	url: sygicURL,
     	headers: {
@@ -46,7 +52,8 @@ function getDataFromGeocodingApi(callback) {
       	data: {
       		bounds: `${south}, ${west}, ${north}, ${east}`,
       		levels: 'poi',
-      		limit: 100
+      		limit: 100,
+      		categories: filter
       	},
       	dataType: 'json',
      	type: 'GET',
@@ -75,4 +82,6 @@ function renderResult(result) {
 }
 }
 }
+
+
 

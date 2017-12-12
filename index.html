@@ -9,7 +9,22 @@
           
           <form aria-label='search-videos' action="#" class="js-search-form" onsubmit="return false;">
             <label for="query"></label>
-            <input aria-label='search-here' type="text" class="js-query" id='search-places'>
+            <input aria-label='search-here' type="text" class="js-query" id='search-places' required>
+            <label for='filters'>What kind of activities interst you?</label>
+            <select name="filters" id='filters' onchange="storeTheFilters()"> 
+              <option value="discovering">Discovering</option> 
+              <option value="eating">Eating</option>
+              <option value='going_out'>Going Out</option>
+              <option value="hiking">Hiking</option>
+              <option value="playing">Playing</option>
+              <option value="relaxing">Relaxing</option>
+              <option value="shopping">Shopping</option>
+              <option value="sightseeing">Sightseeing</option>
+              <!-- <option value="sleeping">Sleeping</option> -->
+              <option value="doing_sports">Doing Sports</option>
+              <option value="traveling">Traveling</option>
+              
+            </select>
             <button aria-label='submit-button' type="submit" onclick="storeTheAddress()">Search</button>
           </form>
           <main role='main'>
