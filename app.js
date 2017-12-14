@@ -1,5 +1,5 @@
-const geocodingURL = "https://maps.googleapis.com/maps/api/geocode/json";
-const sygicURL = 'https://api.sygictravelapi.com/1.0/en/places/list';
+'use strict'
+
 
 function storeTheAddress() {
 	let theAddress = $('.js-query').val();
@@ -11,16 +11,16 @@ function storeTheFilters() {
 	return filter;
 }
 
-function onFormSubmit ()
-    {
+function onFormSubmit () {
         $('#my-form').val('');
-        return true; // allow form submission to continue
+        return true; 
     }
 
 
 function getDataFromGeocodingApi(callback) {
-        let theAddress = storeTheAddress();
-        let query = {
+        const geocodingURL = "https://maps.googleapis.com/maps/api/geocode/json";
+        const theAddress = storeTheAddress();
+        const query = {
         address: theAddress,
         key: 'AIzaSyCjtmHMexw6qH3OnOxTQmW09y1OYcpD6EE'
         }
@@ -36,7 +36,7 @@ function getDataFromGeocodingApi(callback) {
         const eastBound = data.results[0].geometry.bounds.northeast.lng;
         const bounds = [southBound, westBound, northBound, eastBound];
         console.log(bounds);
-        getDataFromSygicApi(renderResult, southBound, westBound, northBound, eastBound);
+        getBasicDataFromSygicApi(renderResult, southBound, westBound, northBound, eastBound);
         }
 
         function handleSubmit() {
@@ -52,8 +52,9 @@ function getDataFromGeocodingApi(callback) {
       
       $(handleSubmit);
 
- function getDataFromSygicApi(callback, south, west, north, east) {
-  		let filter = storeTheFilters();
+ function getBasicDataFromSygicApi(callback, south, west, north, east) {
+  		const sygicURL = 'https://api.sygictravelapi.com/1.0/en/places/list';
+      let filter = storeTheFilters();
   		const settings = {
     	url: sygicURL,
     	headers: {
@@ -73,25 +74,80 @@ function getDataFromGeocodingApi(callback) {
   	$.ajax(settings);
 }
 
+function getDetailedDataFromSygicApi(callback, theId) {
+  		
+  		const settings = {
+    	url: `https://api.sygictravelapi.com/1.0/en/places/${theId}`,
+    	headers: {
+        "x-api-key": "1J87aob1867nkffRIHOopacsRYAJIwwLaQoghwmY"
+      	},
+      	dataType: 'json',
+     	type: 'GET',
+    	success: callback
+  	};
+
+  	$.ajax(settings);
+}
+
 function renderResult(result) {
 	console.log(result.data);
 	const arrayLength = result.data.places.length;
 	for (let i=0; i<arrayLength; i++) {
-	if (result.data.places[i].thumbnail_url === null) {
-		console.log('no image');
-	} else {
-	let theResult = `
+	//if (result.data.places[i].thumbnail_url === null) {
+		//console.log('no image');
+//	} else {
+    let theId = result.data.places[i].id;
+
+    
+       
+	/*let theResult = `
 		<div class='results-div'>
 			<h2>${result.data.places[i].name}</h2>
 			<img src='${result.data.places[i].thumbnail_url}'>
 			<p><a href='${result.data.places[i].url}'>check it out</a></p>
+			<div class='more-info-div more-info-div${i}'>
+      <button class='more-info'>Show More</button>
+      </div>
 		</div>
-	`;
+	`;*/
 	
-	$('.js-search-results').append(theResult);
+
+	//$('.js-search-results').append(theResult);
+ // $(`.more-info`).on('click', function(event) {
+    getDetailedDataFromSygicApi(doSomeStuff, theId);
+ // });
+//}
+}
+
+}
+ 
+
+function doSomeStuff(result) {
+	console.log(result.data);
+  //const theAddress = `<p>${result.data.place.address}<p>`;
+  if (result.data.place.thumbnail_url === null) {
+    console.log('no image'); 
+  } else {
+  let someResults = `
+      <div class='results-div'>
+      <p>${result.data.place.name}<p>
+      <p>${result.data.place.address}<p>
+      <p>${result.data.place.name_suffix}<p>
+      <img src='${result.data.place.thumbnail_url}'>
+      <p>${result.data.place.description.text}</p>
+      <p>${result.data.place.opening_hours}</p>
+      <p>${result.data.place.admission}</p>
+      <p></p>
+      </p></p>
+      </div>
+  `;
+  console.log(someResults); 
+  $('.js-search-results').append(someResults);
 }
 }
-}
+
+
+
 
 
 
