@@ -2,12 +2,13 @@
 <html>
 <head>
 	<title>API Hack</title>
-	<link href="main.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="grid.css" />
+  <link href="main.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-	<h1>Search Travel Destinations</h1>
+	<h1 class='row'>Search Travel Destinations</h1>
           
-          <form aria-label='search-videos' action="#" id='my-form' class="js-search-form" onsubmit="return onFormSubmit()">
+          <form aria-label='search-videos' action="#" id='my-form' class="js-search-form row" onsubmit="return onFormSubmit()">
             <label for="query"></label>
             <input aria-label='search-here' type="text" class="js-query" id='search-places' required>
             <label for='filters'>What kind of activities interst you?</label>
@@ -28,9 +29,9 @@
             <button aria-label='submit-button' type="submit" onclick="storeTheAddress()">Search</button>
           </form>
           <main role='main'>
-          <h2 class='results-title'>Results</h2>
-          <div class="js-search-results" aria-live='assertive' aria-atomic='true'>
-            
+            <h2 class='results-title row'>Results</h2>
+          <div class="js-search-results row" aria-live='assertive' aria-atomic='true'>
+             
           </div> 
           
       </main>

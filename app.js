@@ -1,4 +1,4 @@
-'use strict'
+
 
 
 function storeTheAddress() {
@@ -123,13 +123,14 @@ function renderResult(result) {
  
 
 function doSomeStuff(result) {
-	console.log(result.data);
+	//console.log(theresult.data);
   //const theAddress = `<p>${result.data.place.address}<p>`;
   if (result.data.place.thumbnail_url === null) {
     console.log('no image'); 
   } else {
   let someResults = `
-      <div class='results-div'>
+    
+      <div class='results-div col-1'>
       <p>${result.data.place.name}<p>
       <p>${result.data.place.address}<p>
       <p>${result.data.place.name_suffix}<p>
@@ -137,14 +138,56 @@ function doSomeStuff(result) {
       <p>${result.data.place.description.text}</p>
       <p>${result.data.place.opening_hours}</p>
       <p>${result.data.place.admission}</p>
-      <p></p>
-      </p></p>
       </div>
+      
   `;
   console.log(someResults); 
   $('.js-search-results').append(someResults);
+  //return someResults;
 }
 }
+
+
+
+/*function renderTheResult(result) {
+  //console.log(result.data);
+  const thePlaces = result.data.places;
+   const theDesiredresults = thePlaces.map( function(place, index) { 
+      let someId = thePlaces[0].id;
+      getDetailedDataFromSygicApi(doSomeStuff, someId);
+    });
+     $('.js-search-results').append(theDesiredresults);
+     console.log(theDesiredresults);
+}*/
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
