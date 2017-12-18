@@ -7,7 +7,9 @@ h1 {
   margin-top: 75px;
 }
 
-/*.results-div {
-	margin-bottom: 150px;
-}*/
+.results-div {
+	margin-bottom: 0px;
+	height: 700px;
+	border: 1px silver solid;
+}
 
