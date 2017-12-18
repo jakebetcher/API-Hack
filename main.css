@@ -1,3 +1,7 @@
+.hidden {
+	display: none;
+}
+
 .results-title {
   margin-bottom: 50px;
   margin-top: 40px;
@@ -27,7 +31,7 @@ select {
 
 .results-div {
 	margin-bottom: 0px;
-	height: 700px;
+	height: 800px;
 	border: 1px silver solid;
 }
 

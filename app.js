@@ -39,13 +39,41 @@ function getDataFromGeocodingApi(callback) {
         getBasicDataFromSygicApi(renderResult, southBound, westBound, northBound, eastBound);
         }
 
+
+        function doSomethingWithFilter() {
+          let filter = storeTheFilters();
+              let theAddress = $('.js-query').val();
+              if (filter === 'discovering') {
+                $('.js-search-results').prepend(`<h2>Discover ${theAddress}</h2>`);
+              } else if (filter === 'eating') {
+                $('.js-search-results').prepend(`<h2>Eating in ${theAddress}</h2>`);
+              } else if (filter === 'going_out') {
+                $('.js-search-results').prepend(`<h2>Going Out in ${theAddress}</h2>`);
+              } else if (filter === 'hiking') {
+                $('.js-search-results').prepend(`<h2>Hiking in ${theAddress}</h2>`);
+              } else if (filter === 'playing') {
+                $('.js-search-results').prepend(`<h2>Playing in ${theAddress}</h2>`);
+              } else if (filter === 'relaxing') {
+                $('.js-search-results').prepend(`<h2>Relaxing in ${theAddress}</h2>`);
+              } else if (filter === 'shopping') {
+                $('.js-search-results').prepend(`<h2>Shopping around ${theAddress}</h2>`);
+              } else if (filter === 'sightseeing') {
+                $('.js-search-results').prepend(`<h2> See the sights in ${theAddress}</h2>`);
+              } else if (filter === 'doing_sports') {
+                $('.js-search-results').prepend(`<h2>Play sports in ${theAddress}</h2>`);
+              } else if (filter === 'traveling') {
+                $('.js-search-results').prepend(`<h2>Travel around ${theAddress}</h2>`);
+              }          
+        }
+
         function handleSubmit() {
           $('.js-search-form').submit( function(event) {
               event.preventDefault();
               $('.js-search-results').empty();
               getDataFromGeocodingApi(getCoordinates);
+              doSomethingWithFilter();
               const queryTarget = $(event.currentTarget).find('.js-query');
-    		  const query = queryTarget.val();
+    		      const query = queryTarget.val();
               queryTarget.val("");
           })
       }
@@ -63,7 +91,7 @@ function getDataFromGeocodingApi(callback) {
       	data: {
       		bounds: `${south}, ${west}, ${north}, ${east}`,
       		levels: 'poi',
-      		limit: 100,
+      		limit: 20,
       		categories: filter
       	},
       	dataType: 'json',
