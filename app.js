@@ -1,12 +1,11 @@
-
-
+'use strict'
 
 function storeTheAddress() {
 	let theAddress = $('.js-query').val();
 	return theAddress;
 }
 
-function storeTheFilters() {
+function storeTheFilter() {
 	let filter = $('#filters').val();
 	return filter;
 }
@@ -16,32 +15,8 @@ function onFormSubmit () {
         return true; 
     }
 
-
-function getDataFromGeocodingApi(callback) {
-        const geocodingURL = "https://maps.googleapis.com/maps/api/geocode/json";
-        const theAddress = storeTheAddress();
-        const query = {
-        address: theAddress,
-        key: 'AIzaSyCjtmHMexw6qH3OnOxTQmW09y1OYcpD6EE'
-        }
-        $.getJSON(geocodingURL, query, callback);
-    }
-
-
- function getCoordinates(data) {
-        console.log(data);
-        const southBound = data.results[0].geometry.bounds.southwest.lat;
-        const westBound = data.results[0].geometry.bounds.southwest.lng;
-        const northBound = data.results[0].geometry.bounds.northeast.lat;
-        const eastBound = data.results[0].geometry.bounds.northeast.lng;
-        const bounds = [southBound, westBound, northBound, eastBound];
-        console.log(bounds);
-        getBasicDataFromSygicApi(renderResult, southBound, westBound, northBound, eastBound);
-        }
-
-
-        function doSomethingWithFilter() {
-          let filter = storeTheFilters();
+function displayTitleAccordingToFilter() {
+              let filter = storeTheFilter();
               let theAddress = $('.js-query').val();
               if (filter === 'discovering') {
                 $('.js-search-results').prepend(`<h2>Discover ${theAddress}</h2>`);
@@ -66,92 +41,98 @@ function getDataFromGeocodingApi(callback) {
               }          
         }
 
-        function handleSubmit() {
-          $('.js-search-form').submit( function(event) {
-              event.preventDefault();
-              $('.js-search-results').empty();
-              getDataFromGeocodingApi(getCoordinates);
-              doSomethingWithFilter();
-              const queryTarget = $(event.currentTarget).find('.js-query');
-    		      const query = queryTarget.val();
-              queryTarget.val("");
-          })
-      }
-      
-      $(handleSubmit);
+function getDataFromGeocodingApi(callback) {
+        const geocodingURL = "https://maps.googleapis.com/maps/api/geocode/json";
+        const theAddress = storeTheAddress();
+        const query = {
+        address: theAddress,
+        key: 'AIzaSyCjtmHMexw6qH3OnOxTQmW09y1OYcpD6EE'
+        }
+        $.getJSON(geocodingURL, query, callback);
+    }
 
- function getBasicDataFromSygicApi(callback, south, west, north, east) {
-  		const sygicURL = 'https://api.sygictravelapi.com/1.0/en/places/list';
-      let filter = storeTheFilters();
-  		const settings = {
-    	url: sygicURL,
-    	headers: {
+function getBasicDataFromSygicApi(callback, south, west, north, east) {
+      const sygicURL = 'https://api.sygictravelapi.com/1.0/en/places/list';
+      let filter = storeTheFilter();
+      const settings = {
+      url: sygicURL,
+      headers: {
         "x-api-key": "1J87aob1867nkffRIHOopacsRYAJIwwLaQoghwmY"
-      	},
-      	data: {
-      		bounds: `${south}, ${west}, ${north}, ${east}`,
-      		levels: 'poi',
-      		limit: 20,
-      		categories: filter
-      	},
-      	dataType: 'json',
-     	type: 'GET',
-    	success: callback
-  	};
+        },
+        data: {
+          bounds: `${south}, ${west}, ${north}, ${east}`,
+          levels: 'poi',
+          limit: 20,
+          categories: filter
+        },
+        dataType: 'json',
+      type: 'GET',
+      success: callback
+    };
 
-  	$.ajax(settings);
+    $.ajax(settings);
 }
+
+function passBoundsToBasicSygicApi(data) {
+        console.log(data);
+        const southBound = data.results[0].geometry.bounds.southwest.lat;
+        const westBound = data.results[0].geometry.bounds.southwest.lng;
+        const northBound = data.results[0].geometry.bounds.northeast.lat;
+        const eastBound = data.results[0].geometry.bounds.northeast.lng;
+        const bounds = [southBound, westBound, northBound, eastBound];
+        console.log(bounds);
+        getBasicDataFromSygicApi(passPlaceIdToDetailedSygicApi, southBound, westBound, northBound, eastBound);
+        }
 
 function getDetailedDataFromSygicApi(callback, theId) {
-  		
-  		const settings = {
-    	url: `https://api.sygictravelapi.com/1.0/en/places/${theId}`,
-    	headers: {
+      
+      const settings = {
+      url: `https://api.sygictravelapi.com/1.0/en/places/${theId}`,
+      headers: {
         "x-api-key": "1J87aob1867nkffRIHOopacsRYAJIwwLaQoghwmY"
-      	},
-      	dataType: 'json',
-     	type: 'GET',
-    	success: callback
-  	};
+        },
+        dataType: 'json',
+      type: 'GET',
+      success: callback
+    };
 
-  	$.ajax(settings);
+    $.ajax(settings);
 }
 
-function renderResult(result) {
-	console.log(result.data);
-	const arrayLength = result.data.places.length;
-	for (let i=0; i<arrayLength; i++) {
-	//if (result.data.places[i].thumbnail_url === null) {
-		//console.log('no image');
-//	} else {
+function passPlaceIdToDetailedSygicApi(result) {
+  console.log(result.data);
+  const placesList = result.data.places.length;
+  for (let i=0; i<placesList; i++) {
+  //if (result.data.places[i].thumbnail_url === null) {
+    //console.log('no image');
+//  } else {
     let theId = result.data.places[i].id;
 
     
        
-	/*let theResult = `
-		<div class='results-div'>
-			<h2>${result.data.places[i].name}</h2>
-			<img src='${result.data.places[i].thumbnail_url}'>
-			<p><a href='${result.data.places[i].url}'>check it out</a></p>
-			<div class='more-info-div more-info-div${i}'>
+  /*let theResult = `
+    <div class='results-div'>
+      <h2>${result.data.places[i].name}</h2>
+      <img src='${result.data.places[i].thumbnail_url}'>
+      <p><a href='${result.data.places[i].url}'>check it out</a></p>
+      <div class='more-info-div more-info-div${i}'>
       <button class='more-info'>Show More</button>
       </div>
-		</div>
-	`;*/
-	
+    </div>
+  `;*/
+  
 
-	//$('.js-search-results').append(theResult);
+  //$('.js-search-results').append(theResult);
  // $(`.more-info`).on('click', function(event) {
-    getDetailedDataFromSygicApi(doSomeStuff, theId);
+    getDetailedDataFromSygicApi(renderResult, theId);
  // });
 //}
 }
 
 }
- 
 
-function doSomeStuff(result) {
-	//console.log(theresult.data);
+function renderResult(result) {
+  //console.log(theresult.data);
   //const theAddress = `<p>${result.data.place.address}<p>`;
   if (result.data.place.thumbnail_url === null) {
     console.log('no image'); 
@@ -174,6 +155,29 @@ function doSomeStuff(result) {
   //return someResults;
 }
 }
+
+
+function handleSubmit() {
+          $('.js-search-form').submit( function(event) {
+              event.preventDefault();
+              $('.js-search-results').empty();
+              getDataFromGeocodingApi(passBoundsToBasicSygicApi);
+              displayTitleAccordingToFilter();
+              const queryTarget = $(event.currentTarget).find('.js-query');
+    		      const query = queryTarget.val();
+              queryTarget.val("");
+          })
+      }
+      
+      $(handleSubmit);
+
+
+
+
+
+
+ 
+
 
 
 
