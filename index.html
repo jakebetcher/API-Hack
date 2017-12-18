@@ -6,12 +6,13 @@
   <link href="main.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-	<h1 class='row'>Search Travel Destinations</h1>
-          
+	<header class='row'>
+    <h1>Search Travel Destinations</h1>
+  </header>        
           <form aria-label='search-videos' action="#" id='my-form' class="js-search-form row" onsubmit="return onFormSubmit()">
             <label for="query"></label>
-            <input aria-label='search-here' type="text" class="js-query" id='search-places' required>
-            <label for='filters'>What kind of activities interst you?</label>
+            <input aria-label='search-here' type="text" class="js-query" id='search-places' placeholder='Type a City Name' required>
+            <label class='filters-label' for='filters'>What kind of activities interst you?</label>
             <select name="filters" id='filters' onchange="storeTheFilters()"> 
               <option value="discovering">Discovering</option> 
               <option value="eating">Eating</option>
