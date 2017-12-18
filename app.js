@@ -140,12 +140,15 @@ function renderResult(result) {
   let someResults = `
     
       <div class='results-div col-1'>
-      <p>${result.data.place.name}<p>
-      <p>${result.data.place.address}<p>
-      <p>${result.data.place.name_suffix}<p>
+      <h2>${result.data.place.name}</h2>
+      <p><span>Address: </span>${result.data.place.address}</p>
+      <p>${result.data.place.name_suffix}</p>
       <img src='${result.data.place.thumbnail_url}'>
+      <h4>Description: </h4>
       <p>${result.data.place.description.text}</p>
+      <h4>Hours: </h4>
       <p>${result.data.place.opening_hours}</p>
+      <h4>Admission Information</h4>
       <p>${result.data.place.admission}</p>
       </div>
       
@@ -169,7 +172,7 @@ function handleSubmit() {
           })
       }
       
-      $(handleSubmit);
+ $(handleSubmit);
 
 
 
