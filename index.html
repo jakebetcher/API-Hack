@@ -12,11 +12,11 @@
   </header>        
           <form aria-label='search-videos' action="#" id='my-form' class="js-search-form row" onsubmit="return onFormSubmit()">
             <label for="query"></label>
-            <input aria-label='search-here' type="text" class="js-query" id='search-places' placeholder='Type a City Name' required>
+            <input aria-label='search-here' type="text" class="search-place js-query" id='search-places' placeholder='Type a City Name' required>
             <label class='filters-label' for='filters'>What kind of activities interst you?</label>
             <select name="filters" id='filters' onchange="storeTheFilters()"> 
               <option value="discovering">Discovering</option> 
-              <option value="eating">Eating</option>
+          <!--    <option value="eating">Eating</option> -->
               <option value='going_out'>Going Out</option>
               <option value="hiking">Hiking</option>
               <option value="playing">Playing</option>
@@ -25,7 +25,7 @@
               <option value="sightseeing">Sightseeing</option>
               <!-- <option value="sleeping">Sleeping</option> -->
               <option value="doing_sports">Doing Sports</option>
-              <option value="traveling">Traveling</option>
+          <!--    <option value="traveling">Traveling</option> -->
               
             </select>
             <button aria-label='submit-button' type="submit" onclick="storeTheAddress()">Search</button>
@@ -35,7 +35,7 @@
            
            
           
-          <div class="js-search-results row" aria-live='assertive' aria-atomic='true'>
+          <div class=" search-results js-search-results row" aria-live='assertive' aria-atomic='true'>
              
           </div> 
           

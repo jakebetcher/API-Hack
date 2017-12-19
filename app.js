@@ -132,31 +132,55 @@ function passPlaceIdToDetailedSygicApi(result) {
 }
 
 function renderResult(result) {
-  //console.log(theresult.data);
+  console.log(result.data);
   //const theAddress = `<p>${result.data.place.address}<p>`;
-  if (result.data.place.thumbnail_url === null) {
-    console.log('no image'); 
+  const placeProperties = {
+    placeAddress: result.data.place.address,
+    placeOpeningHours: result.data.place.opening_hours,
+    placeAdmission: result.data.place.admission
+  }
+  for (const prop in placeProperties) {
+    if (placeProperties[prop] === null) {
+      placeProperties[prop] = 'Not Availablle';
+    } else {
+      console.log('success');
+    }
+  }
+    
+  let placeDescription = result.data.place.description;
+   if (placeDescription !== null) {
+     placeDescription = `<p>${placeDescription.text}</p>`;
   } else {
+      placeDescription = '<p>Not Available</p>';
+  }
+
+  let placeThumbnail = result.data.place.thumbnail_url;
+   if (placeThumbnail !== null) {
+     placeThumbnail = `<img src='${placeThumbnail}'>`;
+  } else {
+      placeThumbnail = '<div><p>No image Available</p></div>';
+  }
+  
   let someResults = `
     
       <div class='results-div col-1'>
       <h2>${result.data.place.name}</h2>
-      <p><span>Address: </span>${result.data.place.address}</p>
+      <p><span>Address: </span>${placeProperties.placeAddress}</p>
       <p>${result.data.place.name_suffix}</p>
-      <img src='${result.data.place.thumbnail_url}'>
+      ${placeThumbnail}
       <h4>Description: </h4>
-      <p>${result.data.place.description.text}</p>
+      ${placeDescription}
       <h4>Hours: </h4>
-      <p>${result.data.place.opening_hours}</p>
+      <p>${placeProperties.placeOpeningHours}</p>
       <h4>Admission Information</h4>
-      <p>${result.data.place.admission}</p>
+      <p>${placeProperties.placeAdmission}</p>
       </div>
       
   `;
   console.log(someResults); 
   $('.js-search-results').append(someResults);
   //return someResults;
-}
+//}
 }
 
 
