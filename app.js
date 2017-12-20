@@ -19,25 +19,25 @@ function displayTitleAccordingToFilter() {
               let filter = storeTheFilter();
               let theAddress = $('.js-query').val();
               if (filter === 'discovering') {
-                $('.js-search-results').prepend(`<h2>Discover ${theAddress}</h2>`);
+                $('.js-search-results').prepend(`<h2 class='filter-title'>Discover ${theAddress}</h2>`);
               } else if (filter === 'eating') {
-                $('.js-search-results').prepend(`<h2>Eating in ${theAddress}</h2>`);
+                $('.js-search-results').prepend(`<h2 class='filter-title'>Eating in ${theAddress}</h2>`);
               } else if (filter === 'going_out') {
-                $('.js-search-results').prepend(`<h2>Going Out in ${theAddress}</h2>`);
+                $('.js-search-results').prepend(`<h2 class='filter-title'>Going Out in ${theAddress}</h2>`);
               } else if (filter === 'hiking') {
-                $('.js-search-results').prepend(`<h2>Hiking in ${theAddress}</h2>`);
+                $('.js-search-results').prepend(`<h2 class='filter-title'>Hiking in ${theAddress}</h2>`);
               } else if (filter === 'playing') {
-                $('.js-search-results').prepend(`<h2>Playing in ${theAddress}</h2>`);
+                $('.js-search-results').prepend(`<h2 class='filter-title'>Playing in ${theAddress}</h2>`);
               } else if (filter === 'relaxing') {
-                $('.js-search-results').prepend(`<h2>Relaxing in ${theAddress}</h2>`);
+                $('.js-search-results').prepend(`<h2 class='filter-title'>Relaxing in ${theAddress}</h2>`);
               } else if (filter === 'shopping') {
-                $('.js-search-results').prepend(`<h2>Shopping around ${theAddress}</h2>`);
+                $('.js-search-results').prepend(`<h2 class='filter-title'>Shopping around ${theAddress}</h2>`);
               } else if (filter === 'sightseeing') {
-                $('.js-search-results').prepend(`<h2> See the sights in ${theAddress}</h2>`);
+                $('.js-search-results').prepend(`<h2 class='filter-title'> See the sights in ${theAddress}</h2>`);
               } else if (filter === 'doing_sports') {
-                $('.js-search-results').prepend(`<h2>Play sports in ${theAddress}</h2>`);
+                $('.js-search-results').prepend(`<h2 class='filter-title'>Play sports in ${theAddress}</h2>`);
               } else if (filter === 'traveling') {
-                $('.js-search-results').prepend(`<h2>Travel around ${theAddress}</h2>`);
+                $('.js-search-results').prepend(`<h2 class='filter-title'>Travel around ${theAddress}</h2>`);
               }          
         }
 
@@ -103,37 +103,12 @@ function passPlaceIdToDetailedSygicApi(result) {
   console.log(result.data);
   const placesList = result.data.places.length;
   for (let i=0; i<placesList; i++) {
-  //if (result.data.places[i].thumbnail_url === null) {
-    //console.log('no image');
-//  } else {
     let theId = result.data.places[i].id;
-
-    
-       
-  /*let theResult = `
-    <div class='results-div'>
-      <h2>${result.data.places[i].name}</h2>
-      <img src='${result.data.places[i].thumbnail_url}'>
-      <p><a href='${result.data.places[i].url}'>check it out</a></p>
-      <div class='more-info-div more-info-div${i}'>
-      <button class='more-info'>Show More</button>
-      </div>
-    </div>
-  `;*/
-  
-
-  //$('.js-search-results').append(theResult);
- // $(`.more-info`).on('click', function(event) {
     getDetailedDataFromSygicApi(renderResult, theId);
- // });
-//}
 }
-
 }
 
 function renderResult(result) {
-  console.log(result.data);
-  //const theAddress = `<p>${result.data.place.address}<p>`;
   const placeProperties = {
     placeAddress: result.data.place.address,
     placeOpeningHours: result.data.place.opening_hours,
@@ -160,13 +135,13 @@ function renderResult(result) {
   } else {
       placeThumbnail = '<div><p>No image Available</p></div>';
   }
-  
+
   let someResults = `
     
       <div class='results-div col-1'>
       <h2>${result.data.place.name}</h2>
       <p><span>Address: </span>${placeProperties.placeAddress}</p>
-      <p>${result.data.place.name_suffix}</p>
+      <p><span>City: </span>${result.data.place.name_suffix}</p>
       ${placeThumbnail}
       <h4>Description: </h4>
       ${placeDescription}
@@ -174,13 +149,22 @@ function renderResult(result) {
       <p>${placeProperties.placeOpeningHours}</p>
       <h4>Admission Information</h4>
       <p>${placeProperties.placeAdmission}</p>
+      <button class='show-more show-more-${result.data.place.name}'>Show More</p>
       </div>
       
+            <div class='pop-outer'>
+              <div class='pop-inner row'>
+                <button class='close'>X</button>
+                <h2 class='heading-description'>Description</h2>
+                <div class='the-description'>
+                    ${placeDescription}
+                </div>
+              </div>
+            </div>
   `;
+
   console.log(someResults); 
   $('.js-search-results').append(someResults);
-  //return someResults;
-//}
 }
 
 
@@ -190,14 +174,27 @@ function handleSubmit() {
               $('.js-search-results').empty();
               getDataFromGeocodingApi(passBoundsToBasicSygicApi);
               displayTitleAccordingToFilter();
-              const queryTarget = $(event.currentTarget).find('.js-query');
+              const queryTarget = $(this).find('.js-query');
     		      const query = queryTarget.val();
               queryTarget.val("");
           })
+          displayDescription();
       }
       
- $(handleSubmit);
+function displayDescription() {
+  $('.js-search-results').on('click', '.show-more', function(event) {
+      $('.search-div, .results-div, .filter-title').addClass('body-transparent');
+      $(this).parent().next('.pop-outer').fadeIn();
+  });
+  $('.js-search-results').on('click', '.close', function(event) {
+      $('.search-div, .results-div, .filter-title').removeClass('body-transparent');
+      $(this).parents('.pop-outer').fadeOut();
+  });
+}
 
+
+
+$(handleSubmit);
 
 
 
