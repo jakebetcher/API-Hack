@@ -168,6 +168,7 @@ function handleSubmit() {
           $('.js-search-form').submit( function(event) {
               event.preventDefault();
               $('.js-search-results').empty();
+              $('.form-div').addClass('hidden');
               getDataFromGeocodingApi(passBoundsToBasicSygicApi);
               displayTitleAccordingToFilter();
               const queryTarget = $(this).find('.js-query');
@@ -175,6 +176,7 @@ function handleSubmit() {
               queryTarget.val("");
           })
           displayDescription();
+          backToHome();
       }
       
 function displayDescription() {
@@ -185,6 +187,13 @@ function displayDescription() {
   $('.js-search-results').on('click', '.close', function(event) {
       $('.search-div, .results-div, .filter-title').removeClass('body-transparent');
       $(this).parents('.pop-outer').fadeOut();
+  });
+}
+
+function backToHome() {
+  $('h1').on('click', function(event) {
+      $('.form-div').removeClass('hidden');
+      $('.js-search-results').empty();
   });
 }
 
