@@ -168,7 +168,10 @@ function handleSubmit() {
           $('.js-search-form').submit( function(event) {
               event.preventDefault();
               $('.js-search-results').empty();
+              $('.js-search-div').removeClass('search-div');
+              $('.js-main-header').removeClass('main-header');
               $('.form-div').addClass('hidden');
+
               getDataFromGeocodingApi(passBoundsToBasicSygicApi);
               displayTitleAccordingToFilter();
               const queryTarget = $(this).find('.js-query');
@@ -194,6 +197,8 @@ function backToHome() {
   $('h1').on('click', function(event) {
       $('.form-div').removeClass('hidden');
       $('.js-search-results').empty();
+      $('.js-search-div').addClass('search-div');
+      $('.js-main-header').addClass('main-header');
   });
 }
 
