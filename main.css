@@ -61,16 +61,23 @@ select {
 
 .results-div {
 	margin-bottom: 0px;
-	height: 370px;
+	height: 400px;
 	border: 1px silver solid;
 }
 
-input, label, button, select {
+input, label, .main-button, select {
 	display: block;
 }
 
  .show-more {
- 	margin-top: 20px;
+ 	display: inline;
+ 	background: none;
+ 	border: none;
+ 	color: blue;
+ }
+
+ .description-paragraph {
+ 	display: inline;
  }
 
 

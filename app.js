@@ -20,25 +20,28 @@ function displayTitleAccordingToFilter() {
               let theAddress = $('.js-query').val();
               if (filter === 'discovering') {
                 $('.js-search-results').prepend(`<h2 class='filter-title'>Discover ${theAddress}</h2>`);
-              } else if (filter === 'eating') {
-                $('.js-search-results').prepend(`<h2 class='filter-title'>Eating in ${theAddress}</h2>`);
-              } else if (filter === 'going_out') {
+              } 
+              if (filter === 'going_out') {
                 $('.js-search-results').prepend(`<h2 class='filter-title'>Going Out in ${theAddress}</h2>`);
-              } else if (filter === 'hiking') {
+              } 
+              if (filter === 'hiking') {
                 $('.js-search-results').prepend(`<h2 class='filter-title'>Hiking in ${theAddress}</h2>`);
-              } else if (filter === 'playing') {
+              } 
+              if (filter === 'playing') {
                 $('.js-search-results').prepend(`<h2 class='filter-title'>Playing in ${theAddress}</h2>`);
-              } else if (filter === 'relaxing') {
+              } 
+              if (filter === 'relaxing') {
                 $('.js-search-results').prepend(`<h2 class='filter-title'>Relaxing in ${theAddress}</h2>`);
-              } else if (filter === 'shopping') {
+              } 
+              if (filter === 'shopping') {
                 $('.js-search-results').prepend(`<h2 class='filter-title'>Shopping around ${theAddress}</h2>`);
-              } else if (filter === 'sightseeing') {
+              } 
+              if (filter === 'sightseeing') {
                 $('.js-search-results').prepend(`<h2 class='filter-title'> See the sights in ${theAddress}</h2>`);
-              } else if (filter === 'doing_sports') {
+              } 
+              if (filter === 'doing_sports') {
                 $('.js-search-results').prepend(`<h2 class='filter-title'>Play sports in ${theAddress}</h2>`);
-              } else if (filter === 'traveling') {
-                $('.js-search-results').prepend(`<h2 class='filter-title'>Travel around ${theAddress}</h2>`);
-              }          
+              }     
         }
 
 function getDataFromGeocodingApi(callback) {
@@ -124,9 +127,9 @@ function renderResult(result) {
     
   let placeDescription = result.data.place.description;
    if (placeDescription !== null) {
-     placeDescription = `<p>${placeDescription.text}</p>`;
+     placeDescription = placeDescription.text;
   } else {
-      placeDescription = '<p>Not Available</p>';
+      placeDescription = 'Not Available';
   }
 
   let placeThumbnail = result.data.place.thumbnail_url;
@@ -143,6 +146,8 @@ function renderResult(result) {
       <p><span>Address: </span>${placeProperties.placeAddress}</p>
       <p><span>City: </span>${result.data.place.name_suffix}</p>
       ${placeThumbnail}
+      <h4>Description</h4>
+           <p class='description-paragraph'>${placeDescription.slice(0, 100)}...</p>
       <button class='show-more show-more-${result.data.place.name}'>More Details</p>
       </div>
       
@@ -150,7 +155,7 @@ function renderResult(result) {
         <div class='pop-inner row'>
            <button class='close'>X</button>
            <h2 class='heading-description'>Description</h2>
-           ${placeDescription}
+           <p>${placeDescription}</p>
            <h4>Hours: </h4>
            <p>${placeProperties.placeOpeningHours}</p>
            <h4>Admission Information</h4>
@@ -178,10 +183,14 @@ function handleSubmit() {
     		      const query = queryTarget.val();
               queryTarget.val("");
           })
+      }
+      
+function initApp() {
+          handleSubmit();
           displayDescription();
           backToHome();
       }
-      
+
 function displayDescription() {
   $('.js-search-results').on('click', '.show-more', function(event) {
       $('.search-div, .results-div, .filter-title').addClass('body-transparent');
@@ -204,7 +213,7 @@ function backToHome() {
 
 
 
-$(handleSubmit);
+$(initApp);
 
 
 
