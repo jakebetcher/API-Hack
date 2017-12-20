@@ -143,24 +143,20 @@ function renderResult(result) {
       <p><span>Address: </span>${placeProperties.placeAddress}</p>
       <p><span>City: </span>${result.data.place.name_suffix}</p>
       ${placeThumbnail}
-      <h4>Description: </h4>
-      ${placeDescription}
-      <h4>Hours: </h4>
-      <p>${placeProperties.placeOpeningHours}</p>
-      <h4>Admission Information</h4>
-      <p>${placeProperties.placeAdmission}</p>
-      <button class='show-more show-more-${result.data.place.name}'>Show More</p>
+      <button class='show-more show-more-${result.data.place.name}'>More Details</p>
       </div>
       
-            <div class='pop-outer'>
-              <div class='pop-inner row'>
-                <button class='close'>X</button>
-                <h2 class='heading-description'>Description</h2>
-                <div class='the-description'>
-                    ${placeDescription}
-                </div>
-              </div>
-            </div>
+      <div class='pop-outer'>
+        <div class='pop-inner row'>
+           <button class='close'>X</button>
+           <h2 class='heading-description'>Description</h2>
+           ${placeDescription}
+           <h4>Hours: </h4>
+           <p>${placeProperties.placeOpeningHours}</p>
+           <h4>Admission Information</h4>
+           <p>${placeProperties.placeAdmission}</p>
+        </div>
+      </div>
   `;
 
   console.log(someResults); 

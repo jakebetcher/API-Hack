@@ -25,7 +25,7 @@ header {
 	margin-bottom: 5px;
 }
 
-button {
+.main-button {
 	font-size: 1.5em;
 }
 
@@ -35,14 +35,16 @@ select {
 
 .results-div {
 	margin-bottom: 0px;
-	height: 950px;
+	height: 370px;
 	border: 1px silver solid;
 }
 
 input, label, button {
 	display: block;
 }
-
+ .show-more {
+ 	margin-top: 20px;
+ }
 
 
 
