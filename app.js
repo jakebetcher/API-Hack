@@ -136,7 +136,7 @@ function renderResult(result) {
    if (placeThumbnail !== null) {
      placeThumbnail = `<img src='${placeThumbnail}'>`;
   } else {
-      placeThumbnail = '<div><p>No image Available</p></div>';
+      placeThumbnail = "<img src='https://cdn2.iconfinder.com/data/icons/picol-vector/32/document_image_cancel-128.png'>";
   }
 
   let someResults = `
