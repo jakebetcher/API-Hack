@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang='en'>
 <head>
 	<title>API Hack</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" href="grid.css" />
   <link href="main.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<div class='search-div js-search-div'>
-  <header class='row main-header js-main-header'>
+  <header role='banner' class='row main-header js-main-header'>
     <h1>Search Travel Destinations</h1>
   </header>        
           <div class='form-div'>
-          <form aria-label='search-videos' action="#" id='my-form' class="js-search-form row" onsubmit="return onFormSubmit()">
+          <form aria-label='search-videos' action="#" class="my-form js-search-form row" onsubmit="return onFormSubmit()">
             <label for="query"></label>
-            <input aria-label='search-here' type="text" class="search-place js-query" id='search-places' placeholder='Type a City Name' required>
+            <input aria-label='search-here' type="text" class="search-place js-query" placeholder='Type a City Name' required>
             <label class='filters-label' for='filters'>What kind of activities interst you?</label>
-            <select name="filters" id='filters' onchange="storeTheFilters()"> 
+            <select name="filters" class='filters' onchange="storeTheFilters()"> 
               <option value="discovering">Discovering</option> 
           <!--    <option value="eating">Eating</option> -->
               <option value='going_out'>Going Out</option>
@@ -33,7 +35,7 @@
           </form>
         </div>  
         </div>
-        <main>
+        <main role='main'>
            
           
           <div class=" search-results js-search-results row" aria-live='assertive' aria-atomic='true'>

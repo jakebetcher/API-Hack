@@ -6,12 +6,12 @@ function storeTheAddress() {
 }
 
 function storeTheFilter() {
-	let filter = $('#filters').val();
+	let filter = $('.filters').val();
 	return filter;
 }
 
 function onFormSubmit () {
-        $('#my-form').val('');
+        $('.my-form').val('');
         return true; 
     }
 
@@ -112,6 +112,7 @@ function passPlaceIdToDetailedSygicApi(result) {
 }
 
 function renderResult(result) {
+  console.log(result.data);
   const placeProperties = {
     placeAddress: result.data.place.address,
     placeOpeningHours: result.data.place.opening_hours,
@@ -124,13 +125,20 @@ function renderResult(result) {
       console.log('success');
     }
   }
-    
+  
+  let placeAttribution;
   let placeDescription = result.data.place.description;
    if (placeDescription !== null) {
      placeDescription = placeDescription.text;
+     if (result.data.place.description.link !== null) {
+     placeAttribution = `<p class='modal-text'>More on <a href=${result.data.place.description.link} target='_blank'>${result.data.place.description.provider}</a><p>`
+   } else {
+    placeAttribution = '';
+   }
   } else {
       placeDescription = 'Not Available';
   }
+
 
   let placeThumbnail = result.data.place.thumbnail_url;
    if (placeThumbnail !== null) {
@@ -155,11 +163,12 @@ function renderResult(result) {
         <div class='pop-inner row'>
            <button class='close'>X</button>
            <h2 class='heading-description'>Description</h2>
-           <p>${placeDescription}</p>
-           <h4>Hours: </h4>
-           <p>${placeProperties.placeOpeningHours}</p>
-           <h4>Admission Information</h4>
-           <p>${placeProperties.placeAdmission}</p>
+           <p class='modal-text'>${placeDescription}</p>
+           ${placeAttribution}
+           <h2>Hours: </h2>
+           <p class='modal-text'>${placeProperties.placeOpeningHours}</p>
+           <h2>Admission Information</h2>
+           <p  class='modal-text'>${placeProperties.placeAdmission}</p>
         </div>
       </div>
   `;

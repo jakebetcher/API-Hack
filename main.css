@@ -1,6 +1,18 @@
+
 .hidden {
 	display: none;
 }
+
+/*************************************
+	HOME PAGE
+************************************/	
+
+
+.main-header {
+  margin-top: 60px;
+  margin-bottom: 20px;
+}
+
 
 h1 {
 	font-size: 2.8em;
@@ -11,19 +23,8 @@ h1:hover {
 	opacity: .5;
 }
 
-span {
-	font-weight: bold;
-}
-
-.results-title {
-  margin-bottom: 50px;
-  margin-top: 40px;
-}
-
-
-.main-header {
-  margin-top: 60px;
-  margin-bottom: 20px;
+h1, .filters-label {
+	text-align: center;
 }
 
 .search-place, .main-button {
@@ -31,13 +32,29 @@ span {
 	margin-right: auto;
 }
 
+input {
+	padding: 5px;
+}
+
+span {
+	font-weight: bold;
+}
+
+
+
+.results-title {
+  margin-bottom: 50px;
+  margin-top: 40px;
+}
+
+
+
+
 .search-div {
 	margin-top: 200px;
 }
 
-h1, .filters-label {
-	text-align: center;
-}
+
 
 select {
 	margin-left: auto;
@@ -66,8 +83,9 @@ select {
 
 .results-div {
 	margin-bottom: 0px;
-	height: 430px;
+	height: 450px;
 	border: 1px silver solid;
+	padding: 20px;
 }
 
 input, label, .main-button, select {
@@ -109,10 +127,18 @@ input, label, .main-button, select {
   
   margin-top: 100px;
   width: 100%;
-  height: 600px;
+  height: 700px;
   padding: 25px;
   padding-bottom: 50px;
   border: 3px darkgrey solid;
   background-color: black;
   color: white;
+}
+
+.modal-text {
+	font-size: 1.2em;
+}
+
+.modal-text a {
+	color: white;
 }
