@@ -3,6 +3,56 @@
 	display: none;
 }
 
+.no-image {
+	background-color: white;
+}
+
+
+body {
+	background-image: url("https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=2551&q=80");
+	background-repeat: no-repeat;  
+    background-attachment: fixed;  
+    background-position: 0% 0%;
+    background-size: cover;
+}
+
+.filter-background-images {
+	background-repeat: no-repeat;  
+    background-attachment: fixed;  
+    background-position: 0% 0%;
+    background-size: cover;
+}
+
+.shopping-image {
+	background-image: url("https://images.unsplash.com/photo-1501523460185-2aa5d2a0f981?auto=format&fit=crop&w=3406&q=80");   
+}
+
+.hiking-image {
+	background-image: url("https://images.unsplash.com/photo-1476522465286-b5b94c729d2a?auto=format&fit=crop&w=3198&q=80");
+}
+
+.playing-image {
+	background-image: url("https://images.unsplash.com/photo-1502136969935-8d8eef54d77b?auto=format&fit=crop&w=2549&q=80");
+}
+
+.sightseeing-image {
+	background-image: url("https://images.unsplash.com/photo-1445023086979-7244a12345a8?auto=format&fit=crop&w=2702&q=80");
+}
+
+
+.going_out-image {
+	background-image: url("https://images.unsplash.com/photo-1504981983529-9ed8031ade7f?auto=format&fit=crop&w=2303&q=80");
+}
+
+.relaxing-image {
+	background-image: url("https://images.unsplash.com/photo-1504246979673-176ed6740840?auto=format&fit=crop&w=1251&q=80")
+}
+
+.doing_sports-image {
+	background-image: url("https://images.unsplash.com/photo-1449356669056-f1c1e6e56b0f?auto=format&fit=crop&w=3132&q=80");
+}
+
+
 /*************************************
 	HOME PAGE
 ************************************/	
@@ -13,17 +63,33 @@
   margin-bottom: 20px;
 }
 
+header {
+	text-align: center;
+}
+
+.filter-header {
+	text-align: left;
+}
 
 h1 {
 	font-size: 2.8em;
 }
+
+h1, .filter-title {
+	background-color: black;
+	color: white;
+	display: inline-block;
+	opacity: .8;
+	padding: 7px;
+	border-radius: 10px;
+	}
 
 h1:hover {
 	color: grey;
 	opacity: .5;
 }
 
-h1, .filters-label {
+.filters-label {
 	text-align: center;
 }
 
@@ -60,11 +126,15 @@ select {
 	margin-left: auto;
 	margin-right: auto;
 	font-size: 1.2em;
+	background-color: whitesmoke;
+	border-radius: 10px;
 }
 
 .search-place {
 	font-size: 1.9em;
 	margin-bottom: 30px;
+	border-radius: 10px;
+	background-color: whitesmoke;
 }
 
 .filters-label {
@@ -75,6 +145,8 @@ select {
 
 .main-button {
 	font-size: 1.7em;
+	background-color: whitesmoke;
+	border-radius: 10px;
 }
 
 select {
@@ -83,9 +155,14 @@ select {
 
 .results-div {
 	margin-bottom: 0px;
-	height: 450px;
+	height: 475px;
 	border: 1px silver solid;
 	padding: 20px;
+	background-color: black;
+	color: white;
+	opacity: .8;
+	border-radius: 10px;
+	margin: 5px;
 }
 
 input, label, .main-button, select {

@@ -18,29 +18,33 @@ function onFormSubmit () {
 function displayTitleAccordingToFilter() {
               let filter = storeTheFilter();
               let theAddress = $('.js-query').val();
-              if (filter === 'discovering') {
-                $('.js-search-results').prepend(`<h2 class='filter-title'>Discover ${theAddress}</h2>`);
-              } 
               if (filter === 'going_out') {
-                $('.js-search-results').prepend(`<h2 class='filter-title'>Going Out in ${theAddress}</h2>`);
+                $('.js-search-results').prepend(`<header class='filter-header'><h2 class='filter-title'>Going Out in ${theAddress}</h2></header>`);
+                $('body').addClass('going_out-image filter-background-images');
               } 
               if (filter === 'hiking') {
-                $('.js-search-results').prepend(`<h2 class='filter-title'>Hiking in ${theAddress}</h2>`);
+                $('.js-search-results').prepend(`<header class='filter-header'><h2 class='filter-title'>Hiking in ${theAddress}</h2></header>`);
+                $('body').addClass('hiking-image filter-background-images');
               } 
               if (filter === 'playing') {
-                $('.js-search-results').prepend(`<h2 class='filter-title'>Playing in ${theAddress}</h2>`);
+                $('.js-search-results').prepend(`<header class='filter-header'><h2 class='filter-title'>Playing in ${theAddress}</h2></header>`);
+                $('body').addClass('playing-image filter-background-images');
               } 
               if (filter === 'relaxing') {
-                $('.js-search-results').prepend(`<h2 class='filter-title'>Relaxing in ${theAddress}</h2>`);
+                $('.js-search-results').prepend(`<header class='filter-header'><h2 class='filter-title'>Relaxing in ${theAddress}</h2></header>`);
+                $('body').addClass('relaxing-image filter-background-images');
               } 
               if (filter === 'shopping') {
-                $('.js-search-results').prepend(`<h2 class='filter-title'>Shopping around ${theAddress}</h2>`);
+                $('.js-search-results').prepend(`<header class='filter-header'><h2 class='filter-title'>Shopping around ${theAddress}</h2></header>`);
+                $('body').addClass('shopping-image filter-background-images');
               } 
               if (filter === 'sightseeing') {
-                $('.js-search-results').prepend(`<h2 class='filter-title'> See the sights in ${theAddress}</h2>`);
+                $('.js-search-results').prepend(`<header class='filter-header'><h2 class='filter-title'> See the sights in ${theAddress}</h2></header>`);
+                $('body').addClass('sightseeing-image filter-background-images');
               } 
               if (filter === 'doing_sports') {
-                $('.js-search-results').prepend(`<h2 class='filter-title'>Play sports in ${theAddress}</h2>`);
+                $('.js-search-results').prepend(`<header class='filter-header'><h2 class='filter-title'>Play sports in ${theAddress}</h2></header>`);
+                $('body').addClass('doing_sports-image filter-background-images');
               }     
         }
 
@@ -144,7 +148,7 @@ function renderResult(result) {
    if (placeThumbnail !== null) {
      placeThumbnail = `<img src='${placeThumbnail}'>`;
   } else {
-      placeThumbnail = "<img src='https://cdn2.iconfinder.com/data/icons/picol-vector/32/document_image_cancel-128.png'>";
+      placeThumbnail = "<img class='no-image' src='https://cdn2.iconfinder.com/data/icons/picol-vector/32/document_image_cancel-128.png'>";
   }
 
   let someResults = `
@@ -214,6 +218,7 @@ function displayDescription() {
 function backToHome() {
   $('h1').on('click', function(event) {
       $('.form-div').removeClass('hidden');
+      $('body').removeClass();
       $('.js-search-results').empty();
       $('.js-search-div').addClass('search-div');
       $('.js-main-header').addClass('main-header');
