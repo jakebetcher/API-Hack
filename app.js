@@ -187,9 +187,9 @@ function handleSubmit() {
               event.preventDefault();
               $('.js-search-results').empty();
               $('.js-search-div').removeClass('search-div');
-              $('.js-main-header').removeClass('main-header');
+             // $('.js-main-header').removeClass('main-header');
               $('.form-div').addClass('hidden');
-
+              $('.form-header').addClass('hidden');
               getDataFromGeocodingApi(passBoundsToBasicSygicApi);
               displayTitleAccordingToFilter();
               const queryTarget = $(this).find('.js-query');
@@ -221,7 +221,8 @@ function backToHome() {
       $('body').removeClass();
       $('.js-search-results').empty();
       $('.js-search-div').addClass('search-div');
-      $('.js-main-header').addClass('main-header');
+      $('.form-header').removeClass('hidden');
+      //$('.js-main-header').addClass('main-header');
   });
 }
 

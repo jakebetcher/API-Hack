@@ -7,6 +7,42 @@
 	background-color: white;
 }
 
+.form-header {
+	text-align: center;
+	margin-top: 300px;
+}
+
+.form-title {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: -25px;
+	margin-bottom: 50px;
+	font-size: 2.2em;
+	background-color: black;
+	color: white;
+	opacity: .8;
+	padding: 7px;
+	border-radius: 10px;
+	display: inline-block;
+}
+
+.the-main-header {
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+.my-form {
+	border: 1px black solid;
+	display: inline-block;
+	padding: 20px;
+	border: 1px silver solid;
+	border-radius: 10px;
+	background-color: black;
+	color: white;
+	opacity: .8;
+}
+
 
 body {
 	background-image: url("https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=2551&q=80");
@@ -24,7 +60,7 @@ body {
 }
 
 .shopping-image {
-	background-image: url("https://images.unsplash.com/photo-1501523460185-2aa5d2a0f981?auto=format&fit=crop&w=3406&q=80");   
+	background-image: url("https://images.unsplash.com/photo-1501523460185-2aa5d2a0f981?auto=format&fit=crop&w=2603&q=80");   
 }
 
 .hiking-image {
@@ -58,17 +94,18 @@ body {
 ************************************/	
 
 
-.main-header {
+/*.main-header {
   margin-top: 60px;
   margin-bottom: 20px;
-}
+}*/
 
-header {
+/*header {
 	text-align: center;
-}
+}*/
 
 .filter-header {
-	text-align: left;
+	text-align: center;
+	font-size: 1.65em;
 }
 
 h1 {
@@ -91,6 +128,7 @@ h1:hover {
 
 .filters-label {
 	text-align: center;
+	font-size: 1.8em;
 }
 
 .search-place, .main-button {
@@ -116,8 +154,9 @@ span {
 
 
 
-.search-div {
-	margin-top: 200px;
+.form-div {
+	margin-top: 30px;
+	text-align: center;
 }
 
 
@@ -125,21 +164,21 @@ span {
 select {
 	margin-left: auto;
 	margin-right: auto;
-	font-size: 1.2em;
+	font-size: 1.5em;
 	background-color: whitesmoke;
 	border-radius: 10px;
 }
 
 .search-place {
 	font-size: 1.9em;
-	margin-bottom: 30px;
+	margin-bottom: 40px;
 	border-radius: 10px;
 	background-color: whitesmoke;
+	padding: 10px;
 }
 
 .filters-label {
 	margin-bottom: 10px;
-	font-size: 1.5em;
 	font-weight: bold;
 }
 
@@ -147,6 +186,7 @@ select {
 	font-size: 1.7em;
 	background-color: whitesmoke;
 	border-radius: 10px;
+	padding: 10px;
 }
 
 select {
@@ -155,7 +195,7 @@ select {
 
 .results-div {
 	margin-bottom: 0px;
-	height: 475px;
+	height: 590px;
 	border: 1px silver solid;
 	padding: 20px;
 	background-color: black;
@@ -163,6 +203,7 @@ select {
 	opacity: .8;
 	border-radius: 10px;
 	margin: 5px;
+	font-size: 1.3em;
 }
 
 input, label, .main-button, select {
