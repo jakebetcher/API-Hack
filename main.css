@@ -7,10 +7,7 @@
 	background-color: white;
 }
 
-.form-header {
-	text-align: center;
-	margin-top: 300px;
-}
+
 
 .form-title {
 	margin-left: auto;
@@ -26,11 +23,7 @@
 	display: inline-block;
 }
 
-.the-main-header {
-	position: fixed;
-	top: 0;
-	left: 0;
-}
+
 
 .my-form {
 	border: 1px black solid;
@@ -155,7 +148,7 @@ span {
 
 
 .form-div {
-	margin-top: 30px;
+	/*margin-top: 30px;*/
 	text-align: center;
 }
 

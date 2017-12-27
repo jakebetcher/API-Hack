@@ -39,14 +39,34 @@
   width: 100%;
 }
 
+.the-main-header {
+  text-align: center;
+}
+
+.form-header {
+  text-align: center;
+  margin-top: 120px;
+}
 
 /* Non-mobile, grid */
 @media only screen and (min-width: 640px) {
-  /* 3 columns, 3/12 in % */
-
-  /* 4 columns */
+  
   .col-1 {
     width: 45%;
   }
+
+}
+
+@media only screen and (min-width: 960px) {
+  /* 3 columns, 3/12 in % */
+.the-main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.form-header {
+  margin-top: 300px;
+}
 
 }
