@@ -8,6 +8,10 @@
 }
 
 
+.search-results {
+  text-align: center;
+}
+
 
 .form-title {
 	margin-left: auto;
@@ -190,12 +194,12 @@ select {
 	margin-bottom: 0px;
 	height: 590px;
 	border: 1px silver solid;
-	padding: 20px;
+	/*padding: 20px;*/
 	background-color: black;
 	color: white;
 	opacity: .8;
 	border-radius: 10px;
-	margin: 5px;
+	
 	font-size: 1.3em;
 }
 

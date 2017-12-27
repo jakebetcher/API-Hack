@@ -48,17 +48,44 @@
   margin-top: 120px;
 }
 
-/* Non-mobile, grid */
-@media only screen and (min-width: 640px) {
-  
+
+
+
+
+/*@media only screen and (min-width: 640px) {
+
   .col-1 {
     width: 45%;
   }
 
+.results-div {
+  margin: 5px;
 }
 
+}*/
+
+
+
+
+@media only screen and (min-width: 770px) {
+
+  .col-1 {
+    width: 45%;
+  }
+
+.results-div {
+  margin: 5px;
+}
+
+}
+
+
 @media only screen and (min-width: 960px) {
-  /* 3 columns, 3/12 in % */
+  
+
+ 
+
+
 .the-main-header {
   position: fixed;
   top: 0;
@@ -69,4 +96,10 @@
   margin-top: 300px;
 }
 
+
+
 }
+
+
+
+
