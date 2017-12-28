@@ -1,3 +1,7 @@
+.results-div, .pop-inner {
+	font-family: 'Noto Sans', sans-serif;
+}
+
 
 .hidden {
 	display: none;
@@ -25,6 +29,7 @@
 	padding: 7px;
 	border-radius: 10px;
 	display: inline-block;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 
 
@@ -105,10 +110,12 @@ body {
 .filter-header {
 	text-align: center;
 	font-size: 1.65em;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 
 h1 {
 	font-size: 2.8em;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 
 h1, .filter-title {
