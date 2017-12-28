@@ -210,7 +210,7 @@ function displayDescription() {
   $('.js-search-results').on('click', '.show-more', function(event) {
       $('.search-div, .results-div, .filter-title').addClass('body-transparent');
       $(this).parent().next('.pop-outer').fadeIn();
-  });
+});
   $('.js-search-results').on('click', '.close', function(event) {
       $('.search-div, .results-div, .filter-title').removeClass('body-transparent');
       $(this).parents('.pop-outer').fadeOut();
