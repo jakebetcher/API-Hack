@@ -148,7 +148,7 @@ function renderResult(result) {
 
   let placeThumbnail = result.data.place.thumbnail_url;
    if (placeThumbnail !== null) {
-     placeThumbnail = `<img src='${placeThumbnail}'>`;
+     placeThumbnail = `<img src='${placeThumbnail}' alt='${result.data.place.name}'>`;
   } else {
       placeThumbnail = "<img class='no-image' src='https://cdn2.iconfinder.com/data/icons/picol-vector/32/document_image_cancel-128.png'>";
   }

@@ -211,8 +211,9 @@ input, label, .main-button, select {
  	display: inline;
  	background: none;
  	border: none;
- 	color: blue;
+ 	color: papayawhip;
  	font-size: .9em;
+ 	font-style: italic;
  }
 
  button:hover {
