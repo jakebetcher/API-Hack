@@ -48,7 +48,22 @@
   margin-top: 120px;
 }
 
+.pop-inner {
+  
+  margin-top: 0px;
+  width: 100%;
+  height: 850px;
+  height: 100%;
+  padding: 25px;
+  padding-bottom: 50px;
+  border: 3px darkgrey solid;
+  background-color: black;
+  color: white;
+}
 
+.modal-text {
+  font-size: .8em;
+}
 
 
 
@@ -66,6 +81,19 @@
 
 
 
+@media only screen and (min-width: 640px) {
+  .pop-inner {
+  
+  margin-top: 20px;
+}
+
+.modal-text {
+  font-size: 1.3em;
+  line-height: 1.5em;
+}
+}
+
+
 
 @media only screen and (min-width: 770px) {
 
@@ -77,13 +105,17 @@
   margin: 5px;
 }
 
+
+ 
+
+
+
 }
 
 
 @media only screen and (min-width: 960px) {
   
 
- 
 
 
 .the-main-header {

@@ -139,8 +139,10 @@ function renderResult(result) {
    } else {
     placeAttribution = '';
    }
+
   } else {
       placeDescription = 'Not Available';
+      placeAttribution = '';
   }
 
 
