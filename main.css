@@ -43,8 +43,6 @@
 	background-color: black;
 	color: white;
 	opacity: .8;
-	width: 490px;
-	height: 320px;
 }
 
 
@@ -179,8 +177,9 @@ select {
 	font-size: 1.9em;
 	margin-bottom: 40px;
 	border-radius: 10px;
-	background-color: whitesmoke;
-	padding: 10px;
+	background-color: white;
+	padding: 20px;
+	height: 70px;
 }
 
 .filters-label {
@@ -189,12 +188,18 @@ select {
 }
 
 .main-button {
-	font-size: 1.7em;
-	background-color: whitesmoke;
+	font-size: 1.5em;
+	background-color: #2699ab;;
 	border-radius: 10px;
-	padding: 10px;
-	border-bottom-color: grey;
-	border-bottom-width: 7px;
+	padding: 20px;
+	width: 319px;
+	opacity: 1;
+	font-weight: bold;
+	text-shadow: 1px 1px white;
+}
+
+.main-button:hover {
+	background-color: #228999;
 }
 
 select {
@@ -203,7 +208,7 @@ select {
 
 .results-div {
 	margin-bottom: 0px;
-	height: 590px;
+	height: 620px;
 	border: 1px silver solid;
 	/*padding: 20px;*/
 	background-color: black;
@@ -231,20 +236,13 @@ input, label, .main-button, select {
  	opacity: .5;
  }
 
-select, .search-place {
-	border-bottom-color: grey;
-	border-bottom-width: 7px;
-}
 
 select:hover {
 	opacity: .8;
 }
 
- .main-button:hover {
-	opacity: .95;
-	border-bottom-width: 4px;
-	position: relative;
-	top: 4px;
+.main-button:hover {
+	background-color: #2B79FF;
 }
 
  .description-paragraph {
