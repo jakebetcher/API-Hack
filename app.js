@@ -48,15 +48,25 @@ function displayTitleAccordingToFilter() {
               }     
         }
 
-function getDataFromGeocodingApi(callback) {
+
+    function getDataFromGeocodingApi(callback) {
         const geocodingURL = "https://maps.googleapis.com/maps/api/geocode/json";
         const theAddress = storeTheAddress();
-        const query = {
-        address: theAddress,
-        key: 'AIzaSyCjtmHMexw6qH3OnOxTQmW09y1OYcpD6EE'
-        }
-        $.getJSON(geocodingURL, query, callback);
+        const settings = {
+        url: geocodingURL,
+        data: {
+          address: theAddress,
+          key: 'AIzaSyCjtmHMexw6qH3OnOxTQmW09y1OYcpD6EE'
+        },
+        dataType: 'json',
+        type: 'GET',
+        success: callback
+        //error: displayErrorMessage()
+        };
+        $.ajax(settings);
     }
+
+
 
 function getBasicDataFromSygicApi(callback, south, west, north, east) {
       const sygicURL = 'https://api.sygictravelapi.com/1.0/en/places/list';
@@ -74,7 +84,7 @@ function getBasicDataFromSygicApi(callback, south, west, north, east) {
         },
         dataType: 'json',
       type: 'GET',
-      success: callback
+      success: callback, 
     };
 
     $.ajax(settings);
@@ -195,10 +205,10 @@ function handleSubmit() {
               getDataFromGeocodingApi(passBoundsToBasicSygicApi);
               displayTitleAccordingToFilter();
               const queryTarget = $(this).find('.js-query');
-    		      const query = queryTarget.val();
+    		      //const query = queryTarget.val();
               queryTarget.val("");
           })
-      }
+  }
       
 function initApp() {
           handleSubmit();
@@ -224,7 +234,6 @@ function backToHome() {
       $('.js-search-results').empty();
       $('.js-search-div').addClass('search-div');
       $('.form-header').removeClass('hidden');
-      //$('.js-main-header').addClass('main-header');
   });
 }
 
@@ -238,19 +247,6 @@ $(initApp);
 
  
 
-
-
-
-/*function renderTheResult(result) {
-  //console.log(result.data);
-  const thePlaces = result.data.places;
-   const theDesiredresults = thePlaces.map( function(place, index) { 
-      let someId = thePlaces[0].id;
-      getDetailedDataFromSygicApi(doSomeStuff, someId);
-    });
-     $('.js-search-results').append(theDesiredresults);
-     console.log(theDesiredresults);
-}*/
  
 
 

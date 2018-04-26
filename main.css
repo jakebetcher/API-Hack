@@ -187,7 +187,7 @@ select {
 	font-weight: bold;
 }
 
-.main-button {
+.main-button, .close-error-message {
 	font-size: 1.5em;
 	background-color: #2699ab;;
 	border-radius: 10px;
@@ -208,7 +208,7 @@ select {
 
 .results-div {
 	margin-bottom: 0px;
-	height: 620px;
+	height: 645px;
 	border: 1px silver solid;
 	/*padding: 20px;*/
 	background-color: black;
@@ -293,3 +293,35 @@ select:hover {
 	display: inline-block;
 	margin-right: 100%;
 }
+
+
+.pop-inner-error {
+  
+  margin-top: 50px;
+  width: 100%;
+  height: 300px;
+  padding: 25px;
+  padding-bottom: 50px;
+  border: 3px darkgrey solid;
+  background-color: black;
+  color: white;
+}
+
+.pop-outer-error {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+
